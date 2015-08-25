@@ -11,6 +11,7 @@
 #import "VideoModel.h"
 #import "VideoCell.h"
 #import "MJRefresh.h"
+#import "Video2ViewController.h"
 @interface VideoViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 {
     UICollectionView *_collectionView;
@@ -71,7 +72,7 @@
 {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-49-64-20-20) collectionViewLayout:layout];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-49-59) collectionViewLayout:layout];
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
     _collectionView.backgroundColor = [UIColor whiteColor];
@@ -103,7 +104,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     VideoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"VideoCell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor redColor];
+    cell.backgroundColor = [UIColor whiteColor];
     VideoModel *model = self.dataArray[indexPath.row];
     [cell configModel:model];
     return cell;
@@ -120,6 +121,15 @@
     return UIEdgeInsetsMake(10, 10, 5, 10);
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    Video2ViewController *vc = [[Video2ViewController alloc] init];
+    VideoModel *model = self.dataArray[indexPath.row];
+    
+    vc.video2_id = model.video_id;
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

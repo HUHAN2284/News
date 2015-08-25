@@ -86,7 +86,7 @@
     _waterflowView = [[HMWaterflowView alloc] init];
     _waterflowView.backgroundColor = [UIColor whiteColor];
     
-    _waterflowView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-49-64-20-20);
+    _waterflowView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-49-59);
     _waterflowView.dataSource = self;
     _waterflowView.delegate = self;
     [self.view addSubview:_waterflowView];
